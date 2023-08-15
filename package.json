@@ -8,6 +8,7 @@
     "build": "tsc && vite build",
     "eslint": "eslint . --ext ts,tsx",
     "stylelint": "stylelint \"**/*.scss\"",
+    "format": "prettier -w .",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -26,6 +27,7 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-react": "^7.25.3",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "3.0.2",
     "stylelint": "^15.10.1",
     "stylelint-config-css-modules": "^4.2.0",
     "stylelint-config-standard-scss": "^10.0.0",

@@ -1,5 +1,5 @@
-import type { FC } from 'react'
-import './App.scss'
+import type { FC } from 'react';
+import './App.scss';
 
 const App: FC = () => (
   <>
@@ -7,4 +7,4 @@ const App: FC = () => (
   </>
 );
 
-export default App
+export default App;

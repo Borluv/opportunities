@@ -16,6 +16,10 @@ dist-ssr
 .eslintrc.json
 .stylelintrc.json
 
+# Formatter
+.prettierrc.json
+.prettierignore
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
