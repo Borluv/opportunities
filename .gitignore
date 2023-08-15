@@ -14,6 +14,7 @@ dist-ssr
 
 # Linters
 .eslintrc.json
+.stylelintrc.json
 
 # Editor directories and files
 .vscode/*
