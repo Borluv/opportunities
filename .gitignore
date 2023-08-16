@@ -20,6 +20,9 @@ dist-ssr
 .prettierrc.json
 .prettierignore
 
+# Git hooks
+.husky
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

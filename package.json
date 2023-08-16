@@ -9,7 +9,8 @@
     "eslint": "eslint . --ext ts,tsx",
     "stylelint": "stylelint \"**/*.scss\"",
     "format": "prettier -w .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prepare": "husky install"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -27,11 +28,16 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-react": "^7.25.3",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.0",
     "prettier": "3.0.2",
     "stylelint": "^15.10.1",
     "stylelint-config-css-modules": "^4.2.0",
     "stylelint-config-standard-scss": "^10.0.0",
     "typescript": "^5.1.6",
     "vite": "^4.4.5"
+  },
+  "lint-staged": {
+    "*": "prettier -w -u"
   }
 }
