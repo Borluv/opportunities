@@ -1,2 +1,3 @@
-# opportunities
-I will sincerely think of a description later if required...
+# Opportunities
+
+An index showcasing different investment, leasing, and purchasing opportunities presented by Borluv Developments.
