@@ -16,7 +16,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: '/form',
+    path: 'nuture/4200',
     element: <Form />,
   },
 ]);
