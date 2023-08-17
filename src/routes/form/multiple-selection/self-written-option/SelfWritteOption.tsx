@@ -1,21 +1,14 @@
-import { type FC, useState, ChangeEvent } from 'react';
+import type { ChangeEvent, FC } from 'react';
 
 interface SelfWrittenOptionPropTypes {
-  options: string[];
-  handleSelect: (options: string[]) => void;
+  value: string;
+  selected: boolean;
+  handleSelect: (value: boolean) => void;
+  handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const SelfWrittenOption: FC<SelfWrittenOptionPropTypes> = ({ options, handleSelect }) => {
-  const [value, setValue] = useState('');
-  const [selected, setSelected] = useState(false);
-
-  const handleOther = (event: ChangeEvent<HTMLInputElement>): void => setValue(event.target.value);
-
-  const selectOption = () => {
-    if (selected) setValue('');
-
-    setSelected(!selected);
-  };
+const SelfWrittenOption: FC<SelfWrittenOptionPropTypes> = ({ value, selected, handleSelect, handleChange }) => {
+  const selectOption = (): void => handleSelect(!selected);
 
   return (
     <li>
@@ -26,7 +19,7 @@ const SelfWrittenOption: FC<SelfWrittenOptionPropTypes> = ({ options, handleSele
           name="other"
           placeholder="Please specify"
           value={value}
-          onChange={handleOther}
+          onChange={handleChange}
           disabled={!selected}
         />
       </label>

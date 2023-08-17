@@ -1,52 +1,90 @@
-import { type FC, useState } from 'react';
-import SingleSelection from './single-selection/SingleSelection';
-import SingleSelectionOption from './single-selection/single-selection-option/SingleSelectionOption';
+import type { ChangeEvent, FC, FormEvent } from 'react';
 import MultipleSelection from './multiple-selection/MultipleSelection';
 import MultipleSelectionOption from './multiple-selection/multiple-selection-open/MultipleSelectionOption';
+import type { Options } from '../../shared/types/common';
 import SelfWrittenOption from './multiple-selection/self-written-option/SelfWritteOption';
-
-interface Options {
-  hello: boolean;
-  bye: boolean;
-  other: {
-    value: string;
-    selected: boolean;
-  };
-}
+import SingleSelection from './single-selection/SingleSelection';
+import SingleSelectionOption from './single-selection/single-selection-option/SingleSelectionOption';
+import { stringifyMultipleSelection } from '../../shared/logic/formatMultipleSelection';
+import { useState } from 'react';
 
 const Form: FC = () => {
-  const initialMultipleSelection: Options = {
+  const intialFormQuestions = {
+    full_name: '',
+    email: '',
+    phone_number: '',
+  };
+
+  const initialMultipleSelection = {
     hello: false,
     bye: false,
     other: {
       value: '',
-      selected: true,
+      selected: false,
     },
   };
 
+  const [formQuestions, setFormQuestions] = useState(intialFormQuestions);
   const [option, setOption] = useState('1');
-  const [multipleSelection, setMultipleSelection] = useState(initialMultipleSelection);
+  const [multipleSelection, setMultipleSelection] = useState<Options>(initialMultipleSelection);
 
-  const handleChange = (value: string) => setOption(value);
-  const handleOptions = (options: Options) => setMultipleSelection(options);
+  const handleQuestions = (event: ChangeEvent<HTMLInputElement>): void =>
+    setFormQuestions({ ...formQuestions, [event.target.name]: event.target.value });
 
-  console.log(multipleSelection);
+  const handleChange = (value: string): void => setOption(value);
+  const handleOptions = (name: 'hello' | 'bye'): void =>
+    setMultipleSelection({ ...multipleSelection, [name]: !multipleSelection[name] });
+
+  const handleOtherValue = (event: ChangeEvent<HTMLInputElement>): void =>
+    setMultipleSelection({ ...multipleSelection, other: { ...multipleSelection.other, value: event.target.value } });
+  const handleOtherSelect = (value: boolean): void =>
+    setMultipleSelection({ ...multipleSelection, other: { ...multipleSelection.other, selected: value } });
+
+  const handleSubmit = (event: FormEvent): void => {
+    event.preventDefault();
+
+    const formattedData = {
+      ...formQuestions,
+      role: option,
+      reference: stringifyMultipleSelection(multipleSelection),
+    };
+
+    console.log(formattedData);
+  };
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <label htmlFor="full_name">
         Full name:
-        <input type="text" name="full_name" placeholder="Your Full Name..." />
+        <input
+          type="text"
+          name="full_name"
+          placeholder="Your Full Name..."
+          value={formQuestions.full_name}
+          onChange={handleQuestions}
+        />
       </label>
 
       <label htmlFor="email">
         Email Address:
-        <input type="text" name="email" placeholder="your-email@email.com" />
+        <input
+          type="text"
+          name="email"
+          placeholder="your-email@email.com"
+          value={formQuestions.email}
+          onChange={handleQuestions}
+        />
       </label>
 
       <label htmlFor="phone_number">
         Phone number:
-        <input type="text" name="phone_number" />
+        <input
+          type="text"
+          name="phone_number"
+          placeholder="555-55-5rriente"
+          value={formQuestions.phone_number}
+          onChange={handleQuestions}
+        />
       </label>
 
       <SingleSelection legend="Which of the following options describes your role the best?">
@@ -56,16 +94,16 @@ const Form: FC = () => {
       </SingleSelection>
 
       <MultipleSelection legend="Just select something already...">
-        <MultipleSelectionOption
-          options={multipleSelection}
-          value="hello"
-          label="Hello!"
-          handleSelect={handleOptions}
+        <MultipleSelectionOption label="hello" selected={multipleSelection.hello} handleSelect={handleOptions} />
+        <MultipleSelectionOption label="bye" selected={multipleSelection.bye} handleSelect={handleOptions} />
+        <SelfWrittenOption
+          value={multipleSelection.other.value}
+          selected={multipleSelection.other.selected}
+          handleSelect={handleOtherSelect}
+          handleChange={handleOtherValue}
         />
-        <MultipleSelectionOption options={multipleSelection} value="bye" label="Bye!" handleSelect={handleOptions} />
-        <SelfWrittenOption options={multipleSelection} handleSelect={handleOptions} />
       </MultipleSelection>
-      <button type="submit">Finish!</button>
+      <button type="submit">Submit</button>
     </form>
   );
 };

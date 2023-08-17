@@ -1,22 +1,13 @@
 import type { FC } from 'react';
 
 interface MultipleSelectionOptionPropTypes {
-  options: string[];
-  value: string;
-  label: string;
-  handleSelect: (options: string[]) => void;
+  selected: boolean;
+  label: 'hello' | 'bye';
+  handleSelect: (name: 'hello' | 'bye') => void;
 }
 
-const MultipleSelectionOption: FC<MultipleSelectionOptionPropTypes> = ({ options, value, label, handleSelect }) => {
-  const selected = options.includes(value);
-
-  const selectOption = () => {
-    if (selected) {
-      handleSelect(options.filter((option) => option !== value));
-    } else {
-      handleSelect([...options, value]);
-    }
-  };
+const MultipleSelectionOption: FC<MultipleSelectionOptionPropTypes> = ({ selected, label, handleSelect }) => {
+  const selectOption = (): void => handleSelect(label);
 
   return (
     <li>
