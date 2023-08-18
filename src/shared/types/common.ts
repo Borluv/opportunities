@@ -12,8 +12,10 @@ export interface UserData {
 }
 
 export interface Options {
-  hello: boolean;
-  bye: boolean;
+  'Social media': boolean;
+  'Printed signs': boolean;
+  Recommendation: boolean;
+  Advertisement: boolean;
   other: {
     value: string;
     selected: boolean;

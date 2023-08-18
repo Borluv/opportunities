@@ -2,8 +2,8 @@ import type { FC } from 'react';
 
 interface MultipleSelectionOptionPropTypes {
   selected: boolean;
-  label: 'hello' | 'bye';
-  handleSelect: (name: 'hello' | 'bye') => void;
+  label: 'Social media' | 'Printed signs' | 'Recommendation' | 'Advertisement';
+  handleSelect: (name: 'Social media' | 'Printed signs' | 'Recommendation' | 'Advertisement') => void;
 }
 
 const MultipleSelectionOption: FC<MultipleSelectionOptionPropTypes> = ({ selected, label, handleSelect }) => {

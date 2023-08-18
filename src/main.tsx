@@ -21,7 +21,7 @@ const router = createBrowserRouter([
     element: <Index />,
   },
   {
-    path: 'nuture/4200',
+    path: 'properties/4200-nw-2nd-ave',
     element: <Form />,
   },
 ]);

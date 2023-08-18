@@ -1,0 +1,18 @@
+.button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #ececec;
+  color: #333;
+  height: 150px;
+
+  svg {
+    font-size: 60px;
+  }
+}
+
+.button:disabled {
+  background-color: #59f;
+  color: white;
+}

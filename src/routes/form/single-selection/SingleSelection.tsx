@@ -1,4 +1,5 @@
 import type { FC, ReactElement } from 'react';
+import styles from './SingleSelection.module.scss';
 
 interface SingleSelection {
   legend: string;
@@ -6,10 +7,10 @@ interface SingleSelection {
 }
 
 const SingleSelection: FC<SingleSelection> = ({ legend, children }) => (
-  <div>
+  <>
     <span>{legend}</span>
-    {children}
-  </div>
+    <div className={styles.container}>{children}</div>
+  </>
 );
 
 export default SingleSelection;
