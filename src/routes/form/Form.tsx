@@ -9,7 +9,6 @@ import { PiCirclesThreeFill } from 'react-icons/pi';
 import SelfWrittenOption from './multiple-selection/self-written-option/SelfWrittenOption';
 import SingleSelection from './single-selection/SingleSelection';
 import SingleSelectionOption from './single-selection/single-selection-option/SingleSelectionOption';
-import leads from '../../api/leads';
 import logo from '../../assets/images/logo.png';
 import { stringifyMultipleSelection } from '../../shared/logic/formatMultipleSelection';
 import styles from './Form.module.scss';
@@ -96,9 +95,8 @@ const Form: FC = () => {
     };
 
     console.log(formattedData);
-    leads();
 
-    // window.location.replace(property.flyerURL);
+    window.location.replace(property.flyerURL);
   };
 
   const property = useLoaderData() as Property;
