@@ -12,12 +12,21 @@ export interface UserData {
 }
 
 export interface Options {
-  'Social media': boolean;
-  'Printed signs': boolean;
-  Recommendation: boolean;
-  Advertisement: boolean;
+  socialMedia: boolean;
+  printedSigns: boolean;
+  recommendation: boolean;
+  advertisement: boolean;
   other: {
     value: string;
     selected: boolean;
   };
+}
+
+export interface Property {
+  id: string;
+  address: string;
+  state: string;
+  city: string;
+  postalCode: string;
+  imageURL: string;
 }

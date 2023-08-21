@@ -1,17 +1,18 @@
 import type { ChangeEvent, FC, FormEvent } from 'react';
+import { FaHouseUser, FaMoneyBillTrendUp } from 'react-icons/fa6';
+import type { Options, Property } from '../../shared/types/common';
+import { RiBuilding2Fill, RiSuitcaseFill } from 'react-icons/ri';
+import { GiDiploma } from 'react-icons/gi';
 import MultipleSelection from './multiple-selection/MultipleSelection';
-import MultipleSelectionOption from './multiple-selection/multiple-selection-open/MultipleSelectionOption';
-import type { Options } from '../../shared/types/common';
-import SelfWrittenOption from './multiple-selection/self-written-option/SelfWritteOption';
+import MultipleSelectionOption from './multiple-selection/multiple-selection-option/MultipleSelectionOption';
+import { PiCirclesThreeFill } from 'react-icons/pi';
+import SelfWrittenOption from './multiple-selection/self-written-option/SelfWrittenOption';
 import SingleSelection from './single-selection/SingleSelection';
 import SingleSelectionOption from './single-selection/single-selection-option/SingleSelectionOption';
 import { stringifyMultipleSelection } from '../../shared/logic/formatMultipleSelection';
 import styles from './Form.module.scss';
+import { useLoaderData } from 'react-router-dom';
 import { useState } from 'react';
-import { RiBuilding2Fill, RiSuitcaseFill } from 'react-icons/ri';
-import { FaHouseUser, FaMoneyBillTrendUp } from 'react-icons/fa6';
-import { GiDiploma } from 'react-icons/gi';
-import { PiCirclesThreeFill } from 'react-icons/pi';
 
 const Form: FC = () => {
   const intialFormQuestions = {
@@ -21,10 +22,10 @@ const Form: FC = () => {
   };
 
   const initialMultipleSelection = {
-    'Social media': false,
-    'Printed signs': false,
-    Recommendation: false,
-    Advertisement: false,
+    socialMedia: false,
+    printedSigns: false,
+    recommendation: false,
+    advertisement: false,
     other: {
       value: '',
       selected: false,
@@ -40,7 +41,7 @@ const Form: FC = () => {
     setFormQuestions({ ...formQuestions, [event.target.name]: event.target.value });
 
   const handleChange = (value: string): void => setOption(value);
-  const handleOptions = (name: 'Social media' | 'Printed signs' | 'Recommendation' | 'Advertisement'): void =>
+  const handleOptions = (name: 'socialMedia' | 'printedSigns' | 'recommendation' | 'advertisement'): void =>
     setMultipleSelection({ ...multipleSelection, [name]: !multipleSelection[name] });
 
   const handleOtherValue = (event: ChangeEvent<HTMLInputElement>): void =>
@@ -60,11 +61,17 @@ const Form: FC = () => {
     console.log(formattedData);
   };
 
+  const property = useLoaderData() as Property;
+
   return (
     <div className={styles.container}>
       <form onSubmit={handleSubmit} className={`${styles.form} ${styles[formPage]}`}>
-        <section>
-          <span>Interested in [This property]? Please tell us more about yourself.</span>
+        <section className={styles.dark}>
+          <span className={styles.logo}>
+            Interested in<br />
+            <em>{property.address ?? ''}?</em><br />
+            Please tell us more about yourself.
+          </span>
 
           <label htmlFor="full_name">
             Full name:
@@ -99,7 +106,7 @@ const Form: FC = () => {
             />
           </label>
           <div className={styles.buttons}>
-            <button type="button" onClick={() => setFormPage('middle')} className={styles['margin-button']}>
+            <button type="button" onClick={(): void => setFormPage('middle')} className={styles['margin-button']}>
               NEXT
             </button>
           </div>
@@ -152,25 +159,39 @@ const Form: FC = () => {
           </SingleSelection>
 
           <div className={styles.buttons}>
-            <button type="button" onClick={() => setFormPage('left')}>
+            <button type="button" onClick={(): void => setFormPage('left')}>
               Back
             </button>
-            <button type="button" onClick={() => setFormPage('right')}>
+            <button type="button" onClick={(): void => setFormPage('right')}>
               Next or Skip
             </button>
           </div>
         </section>
 
-        <section>
+        <section className={styles.dark}>
           <MultipleSelection legend="How did you hear about us?">
             <MultipleSelectionOption
               label="Social media"
-              selected={multipleSelection['Social media']}
+              value='socialMedia'
+              selected={multipleSelection.socialMedia}
               handleSelect={handleOptions}
             />
             <MultipleSelectionOption
               label="Printed signs"
-              selected={multipleSelection['Printed signs']}
+              value='printedSigns'
+              selected={multipleSelection.printedSigns}
+              handleSelect={handleOptions}
+            />
+            <MultipleSelectionOption
+              label="Recommendation"
+              value='recommendation'
+              selected={multipleSelection.recommendation}
+              handleSelect={handleOptions}
+            />
+            <MultipleSelectionOption
+              label="Advertisement"
+              value="advertisement"
+              selected={multipleSelection.advertisement}
               handleSelect={handleOptions}
             />
             <SelfWrittenOption
@@ -182,10 +203,10 @@ const Form: FC = () => {
           </MultipleSelection>
 
           <div className={styles.buttons}>
-            <button type="button" onClick={() => setFormPage('middle')}>
+            <button type="button" onClick={(): void => setFormPage('middle')}>
               Back
             </button>
-            <button type="submit">Submit</button>
+            <button type="submit" className={styles.submit}>Submit</button>
           </div>
         </section>
       </form>

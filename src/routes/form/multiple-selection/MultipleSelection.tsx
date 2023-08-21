@@ -6,10 +6,12 @@ interface MultipleSelectionPropTypes {
 }
 
 const MultipleSelection: FC<MultipleSelectionPropTypes> = ({ legend, children }) => (
-  <div>
+  <>
     <span>{legend}</span>
-    <ul>{children}</ul>
-  </div>
+    <div>
+      <ul>{children}</ul>
+    </div>
+  </>
 );
 
 export default MultipleSelection;

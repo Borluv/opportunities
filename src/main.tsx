@@ -3,8 +3,10 @@ import App from './App.tsx';
 import ErrorPage from './routes/error-page/ErrorPage.tsx';
 import Form from './routes/form/Form.tsx';
 import Index from './routes/index/Index.tsx';
+import type { Property } from './shared/types/common.ts';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import properties from './assets/properties.ts';
 import './index.scss';
 
 const rootElement = document.getElementById('root');
@@ -21,8 +23,14 @@ const router = createBrowserRouter([
     element: <Index />,
   },
   {
-    path: 'properties/4200-nw-2nd-ave',
+    path: 'properties/:propertyId',
     element: <Form />,
+    loader: ({ params }): Property => {
+      const property = properties.filter((property) => property.id === params.propertyId)[0];
+      if (!property) throw new Error('Property not found');
+      return property;
+    },
+    errorElement: <ErrorPage />,
   },
 ]);
 

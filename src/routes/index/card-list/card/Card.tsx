@@ -2,7 +2,7 @@ import type { FC } from 'react';
 
 interface CardPropTypes {
   property: {
-    id: number;
+    id: string;
     address: string;
     state: string;
     city: string;

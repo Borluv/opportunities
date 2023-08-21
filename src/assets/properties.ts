@@ -2,7 +2,7 @@ import reactSVG from '../assets/react.svg';
 
 export default [
   {
-    id: 1,
+    id: '4200-nw-2nd-ave',
     address: '4200 NW 2nd Avenue',
     state: 'FL',
     city: 'Miami',
@@ -10,7 +10,7 @@ export default [
     imageURL: reactSVG,
   },
   {
-    id: 2,
+    id: '2',
     address: '5500 S Another Property',
     state: 'FL',
     city: 'Miami',
