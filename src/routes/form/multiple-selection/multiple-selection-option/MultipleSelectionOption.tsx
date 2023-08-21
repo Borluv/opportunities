@@ -1,12 +1,12 @@
 import type { FC } from 'react';
 import { FaCheck } from 'react-icons/fa6';
-import { MdAdd } from 'react-icons/md';
+import { GoDot } from 'react-icons/go';
 import styles from './MultipleSelectionOption.module.scss';
 
 interface MultipleSelectionOptionPropTypes {
   selected: boolean;
   label: string;
-  value : 'socialMedia' | 'printedSigns' | 'recommendation' | 'advertisement';
+  value: 'socialMedia' | 'printedSigns' | 'recommendation' | 'advertisement';
   handleSelect: (name: 'socialMedia' | 'printedSigns' | 'recommendation' | 'advertisement') => void;
 }
 
@@ -14,10 +14,10 @@ const MultipleSelectionOption: FC<MultipleSelectionOptionPropTypes> = ({ selecte
   const selectOption = (): void => handleSelect(value);
 
   return (
-    <li className={styles.option}>
+    <li onClick={selectOption} className={styles.option}>
       <p>{label}</p>
-      <button type="button" title='Check' onClick={selectOption}>
-        {selected ? <FaCheck /> : <MdAdd />}
+      <button type="button" title="Check">
+        {selected ? <FaCheck /> : <GoDot />}
       </button>
     </li>
   );

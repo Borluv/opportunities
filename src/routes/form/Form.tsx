@@ -59,6 +59,7 @@ const Form: FC = () => {
     };
 
     console.log(formattedData);
+    window.location.replace('/flyers/4200-nw-2nd-ave.pdf');
   };
 
   const property = useLoaderData() as Property;
@@ -68,8 +69,10 @@ const Form: FC = () => {
       <form onSubmit={handleSubmit} className={`${styles.form} ${styles[formPage]}`}>
         <section className={styles.dark}>
           <span className={styles.logo}>
-            Interested in<br />
-            <em>{property.address ?? ''}?</em><br />
+            Interested in
+            <br />
+            <em>{property.address ?? ''}?</em>
+            <br />
             Please tell us more about yourself.
           </span>
 
@@ -120,6 +123,7 @@ const Form: FC = () => {
               label="Realtor"
               icon={<RiBuilding2Fill />}
               handleChange={handleChange}
+              handlePage={(): void => setFormPage('right')}
             />
             <SingleSelectionOption
               option="business_owner"
@@ -127,6 +131,7 @@ const Form: FC = () => {
               label="Business Owner"
               icon={<RiSuitcaseFill />}
               handleChange={handleChange}
+              handlePage={(): void => setFormPage('right')}
             />
             <SingleSelectionOption
               option="investor"
@@ -134,6 +139,7 @@ const Form: FC = () => {
               label="Investor"
               icon={<FaMoneyBillTrendUp />}
               handleChange={handleChange}
+              handlePage={(): void => setFormPage('right')}
             />
             <SingleSelectionOption
               option="broker"
@@ -141,6 +147,7 @@ const Form: FC = () => {
               label="Broker"
               icon={<GiDiploma />}
               handleChange={handleChange}
+              handlePage={(): void => setFormPage('right')}
             />
             <SingleSelectionOption
               option="tenant"
@@ -148,6 +155,7 @@ const Form: FC = () => {
               label="Tenant"
               icon={<FaHouseUser />}
               handleChange={handleChange}
+              handlePage={(): void => setFormPage('right')}
             />
             <SingleSelectionOption
               option="other"
@@ -155,6 +163,7 @@ const Form: FC = () => {
               label="Other"
               icon={<PiCirclesThreeFill />}
               handleChange={handleChange}
+              handlePage={(): void => setFormPage('right')}
             />
           </SingleSelection>
 
@@ -172,19 +181,19 @@ const Form: FC = () => {
           <MultipleSelection legend="How did you hear about us?">
             <MultipleSelectionOption
               label="Social media"
-              value='socialMedia'
+              value="socialMedia"
               selected={multipleSelection.socialMedia}
               handleSelect={handleOptions}
             />
             <MultipleSelectionOption
               label="Printed signs"
-              value='printedSigns'
+              value="printedSigns"
               selected={multipleSelection.printedSigns}
               handleSelect={handleOptions}
             />
             <MultipleSelectionOption
               label="Recommendation"
-              value='recommendation'
+              value="recommendation"
               selected={multipleSelection.recommendation}
               handleSelect={handleOptions}
             />
@@ -206,7 +215,9 @@ const Form: FC = () => {
             <button type="button" onClick={(): void => setFormPage('middle')}>
               Back
             </button>
-            <button type="submit" className={styles.submit}>Submit</button>
+            <button type="submit" className={styles.submit}>
+              Submit
+            </button>
           </div>
         </section>
       </form>

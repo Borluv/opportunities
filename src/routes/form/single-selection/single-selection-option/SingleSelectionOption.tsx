@@ -7,12 +7,23 @@ interface SingleSelectionOptionPropTypes {
   label: string;
   icon?: ReactElement;
   handleChange: (value: string) => void;
+  handlePage: () => void;
 }
 
-const SingleSelectionOption: FC<SingleSelectionOptionPropTypes> = ({ option, value, label, icon, handleChange }) => {
+const SingleSelectionOption: FC<SingleSelectionOptionPropTypes> = ({
+  option,
+  value,
+  label,
+  icon,
+  handleChange,
+  handlePage,
+}) => {
   const selected = option === value;
 
-  const changeValue = (): void => handleChange(option);
+  const changeValue = (): void => {
+    handleChange(option);
+    handlePage();
+  };
 
   return (
     <button type="button" onClick={changeValue} className={styles.button} disabled={selected}>

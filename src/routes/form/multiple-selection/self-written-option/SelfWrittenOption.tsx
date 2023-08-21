@@ -1,7 +1,7 @@
 import type { ChangeEvent, FC } from 'react';
 import { FaCheck } from 'react-icons/fa6';
 import { MdAdd } from 'react-icons/md';
-import styles from './selfWrittenOption.module.scss'
+import styles from './selfWrittenOption.module.scss';
 
 interface SelfWrittenOptionPropTypes {
   value: string;
@@ -12,9 +12,12 @@ interface SelfWrittenOptionPropTypes {
 
 const SelfWrittenOption: FC<SelfWrittenOptionPropTypes> = ({ value, selected, handleSelect, handleChange }) => {
   const selectOption = (): void => handleSelect(!selected);
+  const selectFromLabel = (): void => {
+    if (!selected) handleSelect(!selected);
+  };
 
   return (
-    <li className={styles.option}>
+    <li onClick={selectFromLabel} className={styles.option}>
       <label htmlFor="other" className={styles.label}>
         Other
         <input
@@ -27,7 +30,7 @@ const SelfWrittenOption: FC<SelfWrittenOptionPropTypes> = ({ value, selected, ha
         />
       </label>
       <button type="button" onClick={selectOption} className={styles.button}>
-        {selected ? <FaCheck />: <MdAdd />}
+        {selected ? <FaCheck /> : <MdAdd />}
       </button>
     </li>
   );
