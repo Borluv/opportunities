@@ -29,4 +29,5 @@ export interface Property {
   city: string;
   postalCode: string;
   imageURL: string;
+  flyerURL: string;
 }

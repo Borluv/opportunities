@@ -9,6 +9,8 @@ import { PiCirclesThreeFill } from 'react-icons/pi';
 import SelfWrittenOption from './multiple-selection/self-written-option/SelfWrittenOption';
 import SingleSelection from './single-selection/SingleSelection';
 import SingleSelectionOption from './single-selection/single-selection-option/SingleSelectionOption';
+import leads from '../../api/leads';
+import logo from '../../assets/images/logo.png';
 import { stringifyMultipleSelection } from '../../shared/logic/formatMultipleSelection';
 import styles from './Form.module.scss';
 import { useLoaderData } from 'react-router-dom';
@@ -36,18 +38,53 @@ const Form: FC = () => {
   const [option, setOption] = useState('');
   const [multipleSelection, setMultipleSelection] = useState<Options>(initialMultipleSelection);
   const [formPage, setFormPage] = useState<'left' | 'middle' | 'right'>('left');
+  const [error, setError] = useState('  ');
 
   const handleQuestions = (event: ChangeEvent<HTMLInputElement>): void =>
     setFormQuestions({ ...formQuestions, [event.target.name]: event.target.value });
 
   const handleChange = (value: string): void => setOption(value);
+
   const handleOptions = (name: 'socialMedia' | 'printedSigns' | 'recommendation' | 'advertisement'): void =>
     setMultipleSelection({ ...multipleSelection, [name]: !multipleSelection[name] });
 
   const handleOtherValue = (event: ChangeEvent<HTMLInputElement>): void =>
     setMultipleSelection({ ...multipleSelection, other: { ...multipleSelection.other, value: event.target.value } });
+
   const handleOtherSelect = (value: boolean): void =>
     setMultipleSelection({ ...multipleSelection, other: { ...multipleSelection.other, selected: value } });
+
+  const validateFormQuestions = (): string => {
+    const errors = [];
+
+    if (formQuestions.full_name.length < 2) {
+      errors[0] = 'Name too short.';
+    } else if (formQuestions.full_name.length > 50) {
+      errors[0] = 'Name too long.';
+    } else {
+      errors[0] = '';
+    }
+
+    if (formQuestions.email.length > 0) {
+      errors[1] = '';
+    } else {
+      errors[1] = 'Email must be present';
+    }
+
+    if (formQuestions.phone_number.length >= 9 && formQuestions.phone_number.length) {
+      errors[2] = '';
+    } else {
+      errors[2] = 'Invalid phone number.';
+    }
+
+    return errors.filter((error) => error)[0];
+  };
+
+  const nextIfValid = (): void => {
+    const newError = validateFormQuestions();
+    if (!newError) setFormPage('middle');
+    setError(newError);
+  };
 
   const handleSubmit = (event: FormEvent): void => {
     event.preventDefault();
@@ -59,7 +96,9 @@ const Form: FC = () => {
     };
 
     console.log(formattedData);
-    window.location.replace('/flyers/4200-nw-2nd-ave.pdf');
+    leads();
+
+    // window.location.replace(property.flyerURL);
   };
 
   const property = useLoaderData() as Property;
@@ -68,7 +107,8 @@ const Form: FC = () => {
     <div className={styles.container}>
       <form onSubmit={handleSubmit} className={`${styles.form} ${styles[formPage]}`}>
         <section className={styles.dark}>
-          <span className={styles.logo}>
+          <img src={logo} alt="Logo" className={styles.borluv} />
+          <span className={`${styles.logo} ${styles.texture}`}>
             Interested in
             <br />
             <em>{property.address ?? ''}?</em>
@@ -92,6 +132,7 @@ const Form: FC = () => {
             <input
               type="text"
               name="email"
+              autoCapitalize="off"
               placeholder="your-email@email.com"
               value={formQuestions.email}
               onChange={handleQuestions}
@@ -101,7 +142,7 @@ const Form: FC = () => {
           <label htmlFor="phone_number">
             Phone number:
             <input
-              type="text"
+              type="tel"
               name="phone_number"
               placeholder="555-55-5555"
               value={formQuestions.phone_number}
@@ -109,7 +150,8 @@ const Form: FC = () => {
             />
           </label>
           <div className={styles.buttons}>
-            <button type="button" onClick={(): void => setFormPage('middle')} className={styles['margin-button']}>
+            <small>{error}</small>
+            <button type="button" onClick={nextIfValid} className={styles['margin-button']}>
               NEXT
             </button>
           </div>
@@ -215,9 +257,7 @@ const Form: FC = () => {
             <button type="button" onClick={(): void => setFormPage('middle')}>
               Back
             </button>
-            <button type="submit" className={styles.submit}>
-              Submit
-            </button>
+            <button type="submit">Submit</button>
           </div>
         </section>
       </form>

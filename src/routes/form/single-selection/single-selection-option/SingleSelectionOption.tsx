@@ -22,7 +22,7 @@ const SingleSelectionOption: FC<SingleSelectionOptionPropTypes> = ({
 
   const changeValue = (): void => {
     handleChange(option);
-    handlePage();
+    setTimeout(handlePage, 250);
   };
 
   return (

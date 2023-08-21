@@ -7,8 +7,21 @@
   overflow-x: hidden;
 }
 
+.borluv {
+  display: block;
+  width: 150px;
+  margin: 0 auto;
+}
+
+.texture {
+  background-image: url('../../assets/images/bg-texture.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center top;
+}
+
 .dark {
-  background-color: #0c2044;
+  background-color: #2b2743;
   color: white;
 
   label,
@@ -38,7 +51,7 @@
     font-size: 24px;
     text-align: center;
     width: 100%;
-    margin: 40px 0;
+    padding: 60px 0;
   }
 
   label {
@@ -63,7 +76,7 @@
 
   .form label input:focus {
     outline: none;
-    border-bottom: 3px solid #0c2044;
+    border-bottom: 3px solid #2b2743;
   }
 
   .dark label input:focus {
@@ -76,43 +89,45 @@
   }
 }
 
-.logo {
-  background-image: url('https://www.pngmart.com/files/13/Vector-Pattern-PNG-Image-Background.png');
-  background-position: center;
-  background-size: contain;
-}
-
 .buttons {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   margin-top: 80px;
 
+  small {
+    font-size: 16px;
+    color: #f55;
+    margin: auto;
+  }
+
   button {
     background-color: white;
-    color: #0c2044;
+    color: #2b2743;
     width: 45%;
     min-height: 50px;
-    border: 3px solid #0c2044;
+    border: 3px solid #2b2743;
     transition: 0.2s;
   }
 
   button:hover {
-    background-color: #0c2044;
+    background-color: #2b2743;
     color: white;
   }
 }
 
 .dark .buttons {
   button {
-    background-color: #0c2044;
-    color: #f55;
-    border-color: #f55;
+    background-color: #2b2743;
+    color: #ececec;
+    border-color: #ececec;
   }
 
   button:hover {
     background-color: #f55;
     color: white;
+    border-color: #f55;
   }
 }
 
@@ -130,14 +145,4 @@
 
 .right {
   left: -200%;
-}
-
-.submit {
-  color: gold !important;
-  border-color: gold !important;
-}
-
-.submit:hover {
-  background-color: gold !important;
-  color: #0c2044 !important;
 }

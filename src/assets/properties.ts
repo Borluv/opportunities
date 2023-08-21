@@ -8,6 +8,7 @@ export default [
     city: 'Miami',
     postalCode: '33127',
     imageURL: reactSVG,
+    flyerURL: 'https://drive.google.com/file/d/1efQISKoke-0xndIveG7e9ANO7mydWZnG/view',
   },
   {
     id: '2',
@@ -16,5 +17,6 @@ export default [
     city: 'Miami',
     postalCode: '33697',
     imageURL: reactSVG,
+    flyerURL: '',
   },
 ];
