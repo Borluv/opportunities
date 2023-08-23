@@ -1,6 +1,6 @@
 import type { Creds } from '../shared/types/common';
 
-const url = 'http://localhost:3000/auth/';
+const url = import.meta.env.VITE_API_BASE_URL.concat('auth/');
 const appHeaders = { Accept: 'application/json', 'Content-Type': 'application/json' };
 
 export const signUserIn = async (creds: Creds): Promise<void> =>
