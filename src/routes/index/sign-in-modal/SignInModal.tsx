@@ -1,8 +1,13 @@
 import type { ChangeEvent, FC, FormEvent } from 'react';
 import { signUserIn } from '../../../api/sessions';
+import styles from './SignInModal.module.scss';
 import { useState } from 'react';
 
-const SignInModal: FC = () => {
+interface SignInModalPropTypes {
+  close: () => void;
+}
+
+const SignInModal: FC<SignInModalPropTypes> = ({ close }) => {
   const [creds, setCreds] = useState({ username: '', password: '' });
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>): void =>
@@ -11,14 +16,15 @@ const SignInModal: FC = () => {
   const handleSubmit = (event: FormEvent): void => {
     event.preventDefault();
     signUserIn(creds)
-      .then(() => console.log('Remember to close the modal'))
+      .then(() => close())
       .catch((error) => alert(error.message));
   };
 
   return (
     <div className="backdrop">
-      <div>
-        <h3>Sign In</h3>
+      <div className={styles.container}>
+        <h3>Authorize</h3>
+        <p>Please, let us verify you are part of the Borluv Developments staff.</p>
         <form onSubmit={handleSubmit}>
           <label htmlFor="username">
             Username:

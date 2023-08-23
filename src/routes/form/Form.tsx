@@ -14,8 +14,20 @@ import { stringifyMultipleSelection } from '../../shared/logic/formatMultipleSel
 import styles from './Form.module.scss';
 import { useLoaderData } from 'react-router-dom';
 import { useState } from 'react';
+import { createLead } from '../../api/leads';
+import { createInterest } from '../../api/interests';
 
 const Form: FC = () => {
+  const property = useLoaderData() as Property;
+  const storedViewer = localStorage.getItem('viewer') || '';
+  const viewer = storedViewer ? JSON.parse(storedViewer) : null;
+
+  if (viewer?.id) {
+    createInterest(viewer.id, property.id).then(() => window.location.replace(property.flyer_url));
+
+    return <p>redirecting...</p>;
+  }
+
   const intialFormQuestions = {
     full_name: '',
     email: '',
@@ -94,12 +106,14 @@ const Form: FC = () => {
       reference: stringifyMultipleSelection(multipleSelection),
     };
 
-    console.log(formattedData);
-
-    window.location.replace(property.flyerURL);
+    createLead(formattedData)
+      .then((viewer) => {
+        localStorage.setItem('viewer', JSON.stringify(viewer));
+        createInterest(viewer.id, property.id);
+        window.location.replace(property.flyer_url);
+      })
+      .catch((error) => console.error(error.message));
   };
-
-  const property = useLoaderData() as Property;
 
   return (
     <div className={styles.container}>

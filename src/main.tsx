@@ -3,11 +3,10 @@ import App from './App.tsx';
 import ErrorPage from './routes/error-page/ErrorPage.tsx';
 import Form from './routes/form/Form.tsx';
 import Index from './routes/index/Index.tsx';
-import type { Property } from './shared/types/common.ts';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import properties from './assets/properties.ts';
 import './index.scss';
+import { fetchAssets, pickAsset } from './api/assets.ts';
 
 const rootElement = document.getElementById('root');
 if (!rootElement) throw new Error('Root element not found');
@@ -19,17 +18,15 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: 'index',
+    path: 'properties',
     element: <Index />,
+    loader: fetchAssets,
+    errorElement: <ErrorPage />,
   },
   {
     path: 'properties/:propertyId',
     element: <Form />,
-    loader: ({ params }): Property => {
-      const property = properties.filter((property) => property.id === params.propertyId)[0];
-      if (!property) throw new Error('Property not found');
-      return property;
-    },
+    loader: async ({ params }) => pickAsset(params.propertyId).then((property) => property),
     errorElement: <ErrorPage />,
   },
 ]);
