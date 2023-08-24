@@ -1,14 +1,14 @@
+import { type FC, useState } from 'react';
 import CardList from './card-list/CardList';
-import { useState, type FC } from 'react';
 import SignInModal from './sign-in-modal/SignInModal';
 import { isUserSignedIn } from '../../api/sessions';
 import styles from './Index.module.scss';
 
 const Index: FC = () => {
   const [modalVisibility, setModalVisibility] = useState(!isUserSignedIn());
-  const closeModal = () => setModalVisibility(false);
+  const closeModal = (): void => setModalVisibility(false);
 
-  const handleClear = () => localStorage.removeItem('viewer');
+  const handleClear = (): void => localStorage.removeItem('viewer');
 
   return (
     <>

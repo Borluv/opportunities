@@ -5,12 +5,10 @@ interface SearchBarPropTypes {
   handleSearch: () => void;
 }
 
-const Searchbar: FC<SearchBarPropTypes> = ({ search, handleSearch }) => {
-  return (
-    <div>
-      <input type="text" placeholder="Address..." value={search} onChange={handleSearch} />
-    </div>
-  );
-};
+const Searchbar: FC<SearchBarPropTypes> = ({ search, handleSearch }) => (
+  <div>
+    <input type="text" placeholder="Address..." value={search} onChange={handleSearch} />
+  </div>
+);
 
 export default Searchbar;

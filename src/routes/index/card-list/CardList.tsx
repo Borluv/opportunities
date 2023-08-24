@@ -1,7 +1,7 @@
-import { useLoaderData } from 'react-router-dom';
 import Card from './card/Card';
 import type { FC } from 'react';
-import { Property } from '../../../shared/types/common';
+import type { Property } from '../../../shared/types/common';
+import { useLoaderData } from 'react-router-dom';
 
 const CardList: FC = () => {
   const properties = useLoaderData() as Property[];

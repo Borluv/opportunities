@@ -1,7 +1,7 @@
 import { type FC, useState } from 'react';
-import styles from './Card.module.scss';
-import QRModal from './qr-modal/QRModal';
 import { Link } from 'react-router-dom';
+import QRModal from './qr-modal/QRModal';
+import styles from './Card.module.scss';
 
 interface CardPropTypes {
   property: {
@@ -22,10 +22,10 @@ const Card: FC<CardPropTypes> = ({ property }) => {
 
   const [modalVisibility, setModalVisibility] = useState(false);
 
-  const openModal = () => setModalVisibility(true);
-  const closeModal = () => setModalVisibility(false);
+  const openModal = (): void => setModalVisibility(true);
+  const closeModal = (): void => setModalVisibility(false);
 
-  const copyToClipboard = () => navigator.clipboard.writeText(propertyURL);
+  const copyToClipboard = (): Promise<void> => navigator.clipboard.writeText(propertyURL);
 
   return (
     <>

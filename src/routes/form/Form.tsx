@@ -9,24 +9,18 @@ import { PiCirclesThreeFill } from 'react-icons/pi';
 import SelfWrittenOption from './multiple-selection/self-written-option/SelfWrittenOption';
 import SingleSelection from './single-selection/SingleSelection';
 import SingleSelectionOption from './single-selection/single-selection-option/SingleSelectionOption';
+import { createInterest } from '../../api/interests';
+import { createLead } from '../../api/leads';
 import logo from '../../assets/images/logo.png';
 import { stringifyMultipleSelection } from '../../shared/logic/formatMultipleSelection';
 import styles from './Form.module.scss';
 import { useLoaderData } from 'react-router-dom';
 import { useState } from 'react';
-import { createLead } from '../../api/leads';
-import { createInterest } from '../../api/interests';
 
 const Form: FC = () => {
   const property = useLoaderData() as Property;
   const storedViewer = localStorage.getItem('viewer') || '';
   const viewer = storedViewer ? JSON.parse(storedViewer) : null;
-
-  if (viewer?.id) {
-    createInterest(viewer.id, property.id).then(() => window.location.replace(property.flyer_url));
-
-    return <p>redirecting...</p>;
-  }
 
   const intialFormQuestions = {
     full_name: '',
@@ -50,6 +44,12 @@ const Form: FC = () => {
   const [multipleSelection, setMultipleSelection] = useState<Options>(initialMultipleSelection);
   const [formPage, setFormPage] = useState<'left' | 'middle' | 'right'>('left');
   const [error, setError] = useState('  ');
+
+  if (viewer?.id) {
+    createInterest(viewer.id, property.id).then(() => window.location.replace(property.flyer_url));
+
+    return <p>redirecting...</p>;
+  }
 
   const handleQuestions = (event: ChangeEvent<HTMLInputElement>): void =>
     setFormQuestions({ ...formQuestions, [event.target.name]: event.target.value });
@@ -112,7 +112,7 @@ const Form: FC = () => {
         createInterest(viewer.id, property.id);
         window.location.replace(property.flyer_url);
       })
-      .catch((error) => console.error(error.message));
+      .catch((error) => alert(error.message));
   };
 
   return (
