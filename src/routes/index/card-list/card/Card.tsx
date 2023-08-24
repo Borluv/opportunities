@@ -31,7 +31,7 @@ const Card: FC<CardPropTypes> = ({ property }) => {
     <>
       <li className={styles.card}>
         <Link to={`/properties/${nickname}`}>
-          <img src={`/images/${nickname}.jpeg`} alt={address} />
+          <img src={`/images/properties/${nickname}.png`} alt={address} />
         </Link>
         <div className={styles.info}>
           <h2>{address}</h2>
