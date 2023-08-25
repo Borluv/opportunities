@@ -1,0 +1,71 @@
+@use '/src/assets/sass/abstracts/' as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  background-color: #2b2743;
+  color: white;
+  width: 100%;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+
+  img {
+    display: block;
+    width: 100px;
+  }
+
+  h1 {
+    font-family: $playfair;
+    font-size: 32px;
+    font-weight: $regular;
+    padding-left: 15px;
+    margin-left: 10px;
+    border-left: 1px solid white;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  column-gap: 2.5%;
+  margin: 0 2.5%;
+}
+
+@media only screen and (width >= 669px) {
+  .header {
+    h1 {
+      font-size: 44px;
+    }
+
+    img {
+      width: 150px;
+    }
+  }
+
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media only screen and (width >= 1024px) {
+  .header {
+    h1 {
+      font-size: 54px;
+      margin-left: 30px;
+      padding-left: 45px;
+    }
+  }
+
+  .grid {
+    grid-template-columns: 1fr 1fr 1fr;
+    max-width: 1200px;
+    margin: 2.5%;
+  }
+}
