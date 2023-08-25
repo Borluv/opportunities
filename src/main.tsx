@@ -1,6 +1,7 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { fetchAssets, pickAsset } from './api/assets.ts';
 import App from './App.tsx';
+import Catalog from './routes/catalog/Catalog.tsx';
 import ErrorPage from './routes/error-page/ErrorPage.tsx';
 import Form from './routes/form/Form.tsx';
 import Index from './routes/index/Index.tsx';
@@ -20,6 +21,12 @@ const router = createBrowserRouter([
   },
   {
     path: 'properties',
+    element: <Catalog />,
+    loader: fetchAssets,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: 'admin/properties',
     element: <Index />,
     loader: fetchAssets,
     errorElement: <ErrorPage />,
