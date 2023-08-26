@@ -13,7 +13,7 @@ const QRModal: FC<QRModalPropTypes> = ({ close, qrId }) => (
       <MdClose />
     </button>
     <div className={styles.container}>
-      <img src={`/images/qr/${qrId}.png`} alt="QR code" />
+      <img src={`/images/qr/${qrId}.svg`} alt="QR code" />
     </div>
   </div>
 );
