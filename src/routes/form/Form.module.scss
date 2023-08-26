@@ -10,14 +10,19 @@
 .borluv {
   display: block;
   width: 120px;
-  margin: 0 auto;
+  margin: 30px auto 0;
+}
+
+.logo {
+  padding-top: 30px !important;
+  padding-bottom: 10px !important;
 }
 
 .texture {
   background-image: url('../../assets/images/bg-texture.png');
   background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center top;
+  background-size: 450px 300px;
+  background-position: -190px 110%;
 }
 
 .dark {
@@ -83,10 +88,12 @@
     outline: none;
     border-bottom: 3px solid #f55;
   }
+}
 
-  em {
-    color: #f55;
-  }
+.cta {
+  font-size: 18px !important;
+  padding: 0 !important;
+  margin-top: 15px;
 }
 
 .buttons {
@@ -117,6 +124,12 @@
   }
 }
 
+.property {
+  font-size: 24px !important;
+  font-weight: $medium !important;
+  color: #f55;
+}
+
 .dark .buttons {
   button {
     background-color: #2b2743;
@@ -145,4 +158,10 @@
 
 .right {
   left: -200%;
+}
+
+@media only screen and (width >= 669px) {
+  .texture {
+    background-image: none;
+  }
 }

@@ -11,7 +11,7 @@ import SingleSelection from './single-selection/SingleSelection';
 import SingleSelectionOption from './single-selection/single-selection-option/SingleSelectionOption';
 import { createInterest } from '../../api/interests';
 import { createLead } from '../../api/leads';
-import logo from '../../assets/images/logo.png';
+import logo from '../../assets/images/gold-logo.png';
 import { stringifyMultipleSelection } from '../../shared/logic/formatMultipleSelection';
 import styles from './Form.module.scss';
 import { useLoaderData } from 'react-router-dom';
@@ -29,10 +29,12 @@ const Form: FC = () => {
   };
 
   const initialMultipleSelection = {
-    socialMedia: false,
-    printedSigns: false,
-    recommendation: false,
-    advertisement: false,
+    sm: false,
+    dbp: false,
+    oa: false,
+    em: false,
+    ce: false,
+    br: false,
     other: {
       value: '',
       selected: false,
@@ -56,7 +58,7 @@ const Form: FC = () => {
 
   const handleChange = (value: string): void => setOption(value);
 
-  const handleOptions = (name: 'socialMedia' | 'printedSigns' | 'recommendation' | 'advertisement'): void =>
+  const handleOptions = (name: 'sm' | 'dbp' | 'oa' | 'ce' | 'em' | 'br'): void =>
     setMultipleSelection({ ...multipleSelection, [name]: !multipleSelection[name] });
 
   const handleOtherValue = (event: ChangeEvent<HTMLInputElement>): void =>
@@ -80,12 +82,6 @@ const Form: FC = () => {
       errors[1] = '';
     } else {
       errors[1] = 'Email must be present';
-    }
-
-    if (formQuestions.phone_number.length >= 9 && formQuestions.phone_number.length) {
-      errors[2] = '';
-    } else {
-      errors[2] = 'Invalid phone number.';
     }
 
     return errors.filter((error) => error)[0];
@@ -118,15 +114,17 @@ const Form: FC = () => {
   return (
     <div className={styles.container}>
       <form onSubmit={handleSubmit} className={`${styles.form} ${styles[formPage]}`}>
-        <section className={styles.dark}>
+        <section className={`${styles.dark} ${styles.texture}`}>
           <img src={logo} alt="Logo" className={styles.borluv} />
-          <span className={`${styles.logo} ${styles.texture}`}>
-            Interested in
+          <span className={styles.logo}>
+            Presenting
             <br />
-            <em>{property.address ?? ''}?</em>
+            <small className={styles.property}>
+              {property.address ?? ''} {property.city}, {property.state}
+            </small>
             <br />
-            Please tell us more about yourself.
           </span>
+          <span className={styles.cta}>Please tell us more about yourself.</span>
 
           <label htmlFor="full_name">
             Full name:
@@ -230,31 +228,42 @@ const Form: FC = () => {
             </button>
           </div>
         </section>
-
         <section className={styles.dark}>
           <MultipleSelection legend="How did you hear about us?">
             <MultipleSelectionOption
               label="Social media"
-              value="socialMedia"
-              selected={multipleSelection.socialMedia}
+              value="sm"
+              selected={multipleSelection.sm}
               handleSelect={handleOptions}
             />
             <MultipleSelectionOption
-              label="Printed signs"
-              value="printedSigns"
-              selected={multipleSelection.printedSigns}
+              label="Drive by Property"
+              value="dbp"
+              selected={multipleSelection.dbp}
               handleSelect={handleOptions}
             />
             <MultipleSelectionOption
-              label="Recommendation"
-              value="recommendation"
-              selected={multipleSelection.recommendation}
+              label="Online advertisement"
+              value="oa"
+              selected={multipleSelection.oa}
               handleSelect={handleOptions}
             />
             <MultipleSelectionOption
-              label="Advertisement"
-              value="advertisement"
-              selected={multipleSelection.advertisement}
+              label="Conference or Event"
+              value="ce"
+              selected={multipleSelection.ce}
+              handleSelect={handleOptions}
+            />
+            <MultipleSelectionOption
+              label="Email"
+              value="em"
+              selected={multipleSelection.em}
+              handleSelect={handleOptions}
+            />
+            <MultipleSelectionOption
+              label="Broker or Realtor"
+              value="br"
+              selected={multipleSelection.br}
               handleSelect={handleOptions}
             />
             <SelfWrittenOption

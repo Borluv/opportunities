@@ -6,8 +6,8 @@ import styles from './MultipleSelectionOption.module.scss';
 interface MultipleSelectionOptionPropTypes {
   selected: boolean;
   label: string;
-  value: 'socialMedia' | 'printedSigns' | 'recommendation' | 'advertisement';
-  handleSelect: (name: 'socialMedia' | 'printedSigns' | 'recommendation' | 'advertisement') => void;
+  value: 'sm' | 'dbp' | 'oa' | 'ce' | 'em' | 'br';
+  handleSelect: (name: 'sm' | 'dbp' | 'oa' | 'ce' | 'em' | 'br') => void;
 }
 
 const MultipleSelectionOption: FC<MultipleSelectionOptionPropTypes> = ({ selected, label, value, handleSelect }) => {
