@@ -20,12 +20,13 @@
   flex-direction: column;
   justify-content: flex-start;
   background-color: #2b2743;
-  background-image: url('/src/assets/images/bg-texture.png');
-  background-size: contain;
-  background-position: calc(100% + 80px);
-  background-repeat: no-repeat;
+
+  // background-image: url('/src/assets/images/bg-texture.png');
+  // background-size: contain;
+  // background-position: calc(100% + 80px);
+  // background-repeat: no-repeat;
   color: white;
-  padding: 10px 5px 20px;
+  padding: 10px 15px 20px;
   border-radius: 0 0 5px 5px;
 
   h2 {
@@ -47,9 +48,10 @@
 .link {
   font-size: 22px;
   font-weight: $medium;
+  text-align: center;
   text-decoration: none;
   color: #e2c086;
-  width: 60%;
+  width: 100%;
   padding: 5px 10px;
   margin-top: 20px;
   border: 2px solid #e2c086;

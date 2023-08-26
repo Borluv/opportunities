@@ -1,6 +1,7 @@
 import CatalogCard from './catalog-card/CatalogCard';
 import type { FC } from 'react';
 import type { Property } from '../../shared/types/common';
+import areas from '../../assets/areas';
 import goldLogo from '../../assets/images/gold-logo.png';
 import styles from './Catalog.module.scss';
 import { useLoaderData } from 'react-router-dom';
@@ -17,7 +18,11 @@ const Catalog: FC = () => {
       <main>
         <ul className={styles.grid}>
           {properties.map((property) => (
-            <CatalogCard key={`ppt-${property.id}`} property={property} />
+            <CatalogCard
+              key={`ppt-${property.id}`}
+              property={property}
+              area={areas.find((area) => area.id === property.nickname)}
+            />
           ))}
         </ul>
       </main>
