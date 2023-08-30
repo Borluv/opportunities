@@ -48,3 +48,13 @@ export interface Property {
   image_url: string;
   flyer_url: string;
 }
+
+export interface Interest {
+  id: string;
+  asset: {
+    id: string;
+    address: string;
+    flyer_url: string;
+  };
+  created_at: string;
+}
