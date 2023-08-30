@@ -41,7 +41,7 @@ const router = createBrowserRouter([
       isSessionActive();
 
       return await fetchLeads()
-        .then((leads) => leads)
+        .then((leads) => leads.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()))
         .catch((error) => alert(error.message));
     },
     errorElement: <ErrorPage />,
