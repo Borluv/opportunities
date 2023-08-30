@@ -1,13 +1,16 @@
+import type { Lead, Property } from './shared/types/common.ts';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { fetchAssets, pickAsset } from './api/assets.ts';
 import App from './App.tsx';
 import Catalog from './routes/catalog/Catalog.tsx';
+import Elisometer from './routes/elisometer/Elisometer.tsx';
 import ErrorPage from './routes/error-page/ErrorPage.tsx';
 import Form from './routes/form/Form.tsx';
 import Index from './routes/index/Index.tsx';
-import type { Property } from './shared/types/common.ts';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { fetchLeads } from './api/leads.ts';
+import isSessionActive from './api/users.ts';
 import './index.scss';
 
 const rootElement = document.getElementById('root');
@@ -29,6 +32,18 @@ const router = createBrowserRouter([
     path: 'admin/properties',
     element: <Index />,
     loader: fetchAssets,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: 'admin/leads',
+    element: <Elisometer />,
+    loader: async (): Promise<Lead[] | void> => {
+      isSessionActive();
+
+      return await fetchLeads()
+        .then((leads) => leads)
+        .catch((error) => alert(error.message));
+    },
     errorElement: <ErrorPage />,
   },
   {
