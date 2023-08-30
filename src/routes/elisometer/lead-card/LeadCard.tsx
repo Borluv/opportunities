@@ -3,6 +3,7 @@ import { BsHouseHeartFill } from 'react-icons/bs';
 import InterestsModal from './interests-modal/InterestsModal';
 import type { Lead } from '../../../shared/types/common';
 import styles from './LeadCard.module.scss';
+import formatDate from '../../../shared/logic/formatDate';
 
 interface LeadCardProptypes {
   lead: Lead;
@@ -21,7 +22,7 @@ const LeadCard: FC<LeadCardProptypes> = ({ lead: { id, full_name, email, phone_n
           <span>{full_name}</span>
           <span>{email}</span>
           <span>{phone_number}</span>
-          <span>{created_at}</span>
+          <span>{formatDate(created_at)}</span>
         </div>
         <button type="button" onClick={openModal} className={styles.button}>
           <BsHouseHeartFill />
