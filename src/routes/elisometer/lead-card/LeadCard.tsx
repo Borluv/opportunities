@@ -2,8 +2,8 @@ import { type FC, useState } from 'react';
 import { BsHouseHeartFill } from 'react-icons/bs';
 import InterestsModal from './interests-modal/InterestsModal';
 import type { Lead } from '../../../shared/types/common';
-import styles from './LeadCard.module.scss';
 import formatDate from '../../../shared/logic/formatDate';
+import styles from './LeadCard.module.scss';
 
 interface LeadCardProptypes {
   lead: Lead;
