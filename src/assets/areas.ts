@@ -1,10 +1,10 @@
 export default [
   {
     id: '581-w-27th-st',
-    area: '2000 rentable sqft',
+    area: '2,000 rentable sqft',
   },
   {
-    id: '2821-w-25th-pi',
+    id: '2821-w-25th-pl',
     area: '14,362 rentable sqft',
   },
   {
@@ -13,7 +13,7 @@ export default [
   },
   {
     id: '5999-s-university-dr',
-    area: '41434 sqft',
+    area: '41,434 sqft',
   },
   {
     id: '6950-s-congress-ave',
