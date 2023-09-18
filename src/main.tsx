@@ -7,6 +7,7 @@ import Elisometer from './routes/elisometer/Elisometer.tsx';
 import ErrorPage from './routes/error-page/ErrorPage.tsx';
 import Form from './routes/form/Form.tsx';
 import Index from './routes/index/Index.tsx';
+import Offering from './routes/property/Property.tsx';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { fetchLeads } from './api/leads.ts';
@@ -50,6 +51,11 @@ const router = createBrowserRouter([
     path: 'properties/:propertyId',
     element: <Form />,
     loader: async ({ params }): Promise<Property> => pickAsset(params.propertyId).then((property) => property),
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: 'test',
+    element: <Offering />,
     errorElement: <ErrorPage />,
   },
 ]);
