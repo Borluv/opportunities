@@ -1,0 +1,55 @@
+@use '/src/assets/sass/abstracts/' as *;
+
+.footer {
+  background-color: $blue-30;
+  background-image: url('/src/assets/images/half-bg-texture.png');
+  background-position: right center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  color: $white-100;
+  padding: 20px 2.5%;
+
+  h2 {
+    font-size: 24px;
+    font-family: $crimson;
+    font-weight: $regular;
+    margin-bottom: 20px;
+  }
+}
+
+.question {
+  font-size: 12px;
+  font-family: $roboto;
+  font-weight: $light;
+}
+
+.decoline {
+  width: 40%;
+  border-bottom: 1px solid $rose-50;
+  margin: 10px 0 10px -2.5%;
+}
+
+@include media(600px) {
+  .footer {
+    background-image: url('/src/assets/images/bg-texture.png');
+  }
+}
+
+@include media(669px) {
+  .footer {
+    padding: 50px 2.5%;
+
+    h2 {
+      font-size: 32px;
+      margin-bottom: 30px;
+    }
+  }
+
+  .question {
+    font-size: 16px;
+  }
+
+  .decoline {
+    margin: 30px 0 30px -2.5%;
+  }
+}

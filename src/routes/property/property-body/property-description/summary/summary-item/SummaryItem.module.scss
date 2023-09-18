@@ -1,0 +1,36 @@
+@use '/src/assets/sass/abstracts/' as *;
+
+.item {
+  @include center-contents(false);
+
+  justify-content: space-between;
+  padding: 10px 2.5%;
+  border-radius: 5px;
+}
+
+.item:nth-child(even) {
+  background-color: $gold-90;
+}
+
+.key {
+  font-size: 20px;
+  font-family: $crimson;
+  font-weight: $regular;
+  width: 40%;
+}
+
+.value {
+  font-size: 14px;
+  font-family: $roboto;
+  font-weight: $light;
+}
+
+@include media(669px) {
+  .key {
+    font-size: 24px;
+  }
+
+  .value {
+    font-size: 18px;
+  }
+}
