@@ -1,16 +1,20 @@
 import type { FC } from 'react';
 import Summary from './summary/Summary';
+import type { SummaryItem } from '../../../../assets/data';
 import styles from './PropertyDescription.module.scss';
 
-const PropertyDescription: FC = () => (
+interface PropertyDescriptionPropTypes {
+  summary: SummaryItem[];
+  altView: string;
+}
+
+const PropertyDescription: FC<PropertyDescriptionPropTypes> = ({ summary, altView }) => (
   <section className={styles.description}>
     <div className={styles.info}>
       <h2>Description</h2>
-      <Summary />
+      <Summary summary={summary} />
     </div>
-    {true && (
-      <img src="/images/properties/13508-n-florida-ave.png" alt="Property alternate view" className={styles.image} />
-    )}
+    {true && <img src={altView} alt="Property alternate view" className={styles.image} />}
   </section>
 );
 

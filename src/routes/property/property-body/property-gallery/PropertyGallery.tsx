@@ -1,9 +1,13 @@
 import { type FC, useState } from 'react';
 import styles from './PropertyGallery.module.scss';
 
+interface PropertyGalleryPropTypes {
+  gallery: string[];
+}
+
 const arr = ['first', 'second', 'third'];
 
-const PropertyGallery: FC = () => {
+const PropertyGallery: FC<PropertyGalleryPropTypes> = ({ gallery }) => {
   const [carousel, setCarousel] = useState(0);
 
   const turnNext = (): void => setCarousel(carousel + 1);
@@ -13,24 +17,9 @@ const PropertyGallery: FC = () => {
       <h2>Gallery</h2>
       <div className={styles.container}>
         <div className={styles[arr[carousel]]}>
-          <img
-            src="/images/properties/13508-n-florida-ave.png"
-            alt="Gallery image"
-            onClick={turnNext}
-            className={styles.image}
-          />
-          <img
-            src="/images/properties/13508-n-florida-ave.png"
-            alt="Gallery image"
-            onClick={turnNext}
-            className={styles.image}
-          />
-          <img
-            src="/images/properties/13508-n-florida-ave.png"
-            alt="Gallery image"
-            onClick={(): void => setCarousel(0)}
-            className={styles.image}
-          />
+          <img src={gallery[0]} alt="Gallery image" onClick={turnNext} className={styles.image} />
+          <img src={gallery[1]} alt="Gallery image" onClick={turnNext} className={styles.image} />
+          <img src={gallery[2]} alt="Gallery image" onClick={(): void => setCarousel(0)} className={styles.image} />
         </div>
       </div>
       <div className={styles.indicators}>

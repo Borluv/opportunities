@@ -1,11 +1,15 @@
 import type { FC } from 'react';
 import styles from './PropertyMap.module.scss';
 
-const PropertyMap: FC = () => (
+interface PropertyMapPropTypes {
+  map: string;
+}
+
+const PropertyMap: FC<PropertyMapPropTypes> = ({ map }) => (
   <section className={styles.map}>
     <h2>Map</h2>
     <div className={styles.container}>
-      <p>This is the map.</p>
+      <img src={map} alt="Nearby gems" />
     </div>
   </section>
 );

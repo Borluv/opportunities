@@ -20,7 +20,7 @@
 .third {
   @include center-contents(false);
 
-  position: relative;
+  width: 300%;
   transition: 0.5s;
 }
 
@@ -29,11 +29,11 @@
 }
 
 .second {
-  transform: translateX(-100%);
+  transform: translateX(calc(-100% / 3));
 }
 
 .third {
-  transform: translateX(-200%);
+  transform: translateX(calc(-200% / 3));
 }
 
 .container {
@@ -45,9 +45,10 @@
 }
 
 .image {
-  width: 100%;
+  cursor: pointer;
+  display: block;
+  width: 33.33%;
   aspect-ratio: 1.25;
-  border-radius: 10px;
 }
 
 .indicators {

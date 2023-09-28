@@ -14,13 +14,14 @@
 }
 
 .container {
-  @include center_contents;
-
-  background-color: $white_100;
+  background-color: transparent;
   color: $rose_50;
   width: 100%;
-  height: 200px;
-  border-radius: 10px;
+
+  img {
+    width: 100%;
+    border-radius: 30px;
+  }
 }
 
 @include media(669px) {
@@ -28,9 +29,5 @@
     h2 {
       font-size: 32px;
     }
-  }
-
-  .container {
-    height: 600px;
   }
 }

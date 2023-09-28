@@ -48,3 +48,18 @@
     width: 20%;
   }
 }
+
+@include media(1024px) {
+  .header {
+    font-size: 28px;
+
+    h1 {
+      font-size: 64px;
+      line-height: 60px;
+    }
+  }
+
+  .logo {
+    width: 250px;
+  }
+}
