@@ -54,8 +54,9 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: 'test',
+    path: 'test/:propertyId',
     element: <Offering />,
+    loader: async ({ params }): Promise<Property> => pickAsset(params.propertyId).then((property) => property),
     errorElement: <ErrorPage />,
   },
 ]);
