@@ -26,7 +26,7 @@
 
 @include media(669px) {
   .description {
-    @include center-contents(true, false);
+    @include center-contents;
 
     h2 {
       font-size: 32px;
@@ -39,7 +39,7 @@
 
   .image {
     width: 50%;
-    aspect-ratio: 1.25;
+    aspect-ratio: 0.8;
   }
 }
 

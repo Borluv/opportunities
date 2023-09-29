@@ -60,6 +60,12 @@
   }
 }
 
+@include media(575px) {
+  .frame {
+    margin-right: -35%;
+  }
+}
+
 @include media(800px) {
   .remarks {
     flex-direction: row;

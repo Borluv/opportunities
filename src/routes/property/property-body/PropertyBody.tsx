@@ -4,13 +4,14 @@ import PropertyDescription from './property-description/PropertyDescription';
 import PropertyGallery from './property-gallery/PropertyGallery';
 import PropertyMap from './property-map/PropertyMap';
 import PropertyRemarks from './property-remarks/PropertyRemarks';
+import styles from './PropertyBody.module.scss';
 
 interface PropertyBodyPropTypes {
   property: PropertyData;
 }
 
 const PropertyBody: FC<PropertyBodyPropTypes> = ({ property: { id, remarks, map, gallery, summary, altView } }) => (
-  <main>
+  <main className={styles.main}>
     <PropertyRemarks id={id} remarks={remarks} />
     <PropertyMap map={map} />
     <PropertyGallery gallery={gallery} />
