@@ -49,13 +49,13 @@ const router = createBrowserRouter([
   },
   {
     path: 'properties/:propertyId',
-    element: <Form />,
+    element: <Offering />,
     loader: async ({ params }): Promise<Property> => pickAsset(params.propertyId).then((property) => property),
     errorElement: <ErrorPage />,
   },
   {
-    path: 'test/:propertyId',
-    element: <Offering />,
+    path: 'form/:propertyId',
+    element: <Form />,
     loader: async ({ params }): Promise<Property> => pickAsset(params.propertyId).then((property) => property),
     errorElement: <ErrorPage />,
   },
