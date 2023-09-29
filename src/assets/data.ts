@@ -512,13 +512,67 @@ export default [
     altView: '/images/galleries/Photos-25-06.jpg',
   },
   {
+    id: '191-nw-44th-st',
+    title: '191 NW 44th St',
+    subtitle: 'Miami, FL 33127, USA',
+    remarks: [
+      'We present a unique opportunity at 191 NW 44th St, Miami, FL 33127, USA.',
+      'This vacant lot spans 7,200 SF and is located strategically near the Institute of Contemporary Art Miami, the Centner Academy Preschool Campus, and restaurants. This multi-family property in Miami-Dade County offers exceptional potential for investors.',
+      "Don't miss this opportunity; contact us today.",
+    ],
+    map: '/images/galleries/Photos-12-05.jpg',
+    gallery: [
+      '/images/galleries/Photos-12-02.jpg',
+      '/images/galleries/Photos-12-03.jpg',
+      '/images/galleries/Photos-12-04.jpg',
+    ],
+    summary: [
+      {
+        id: 1,
+        key: 'County / City',
+        value: 'Miami Dade',
+      },
+      {
+        id: 2,
+        key: 'Asset Type',
+        value: 'Land',
+      },
+      {
+        id: 3,
+        key: 'Approved Use',
+        value: 'Residential',
+      },
+      {
+        id: 4,
+        key: 'Rentable Square Footage',
+        value: '7,200 sqft',
+      },
+      {
+        id: 5,
+        key: 'Lot Size',
+        value: '7,200 sqft',
+      },
+      {
+        id: 6,
+        key: 'Household Income',
+        value: '$61,200',
+      },
+      {
+        id: 7,
+        key: 'Annual Average Daily Traffic',
+        value: '52,000',
+      },
+    ],
+    altView: '/images/galleries/Photos-12-06.jpg',
+  },
+  {
     id: '3922-nw-2nd-ave',
     title: '3922 NW 2nd Ave',
     subtitle: 'Miami, FL 33127, USA',
     remarks: [
       'Discover this outstanding investment opportunity at 3922 NW 2nd Ave, Miami, FL 33127, USA.',
       'This multifamily property is strategically located near the Institute of Contemporary Art Miami and the renowned Wynwood Walls. In addition, its proximity to the busy I-95 Express and various restaurants adds extra appeal. Located in Miami Dade County, with a constant traffic flow, this property stands out for its investment potential in the residential sector.',
-      'Don’t let this opportunity pass you by! Contact us today to receive additional details and start your journey toward a successful investment in this constantly evolving market.',
+      "Don't let this opportunity pass you by! Contact us today to receive additional details and start your journey toward a successful investment in this constantly evolving market.",
     ],
     map: '/images/galleries/Photos-24-04.jpg',
     gallery: [
@@ -576,9 +630,9 @@ export default [
     ],
     map: '/images/galleries/Photos-22-05.jpg',
     gallery: [
-      'images/galleries/Photos-22-02.jpg',
-      'images/galleries/Photos-22-03.jpg',
-      'images/galleries/Photos-22-04.jpg',
+      '/images/galleries/Photos-22-02.jpg',
+      '/images/galleries/Photos-22-03.jpg',
+      '/images/galleries/Photos-22-04.jpg',
     ],
     summary: [
       {
@@ -617,7 +671,7 @@ export default [
         value: '52,000',
       },
     ],
-    altView: '/images/galleries/Photos-22-05.jpg',
+    altView: '/images/galleries/Photos-22-06.jpg',
   },
   {
     id: '4200-nw-2nd-ave',
