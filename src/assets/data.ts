@@ -1,4 +1,23 @@
-export default [
+export interface SummaryItem {
+  id: number;
+  key: string;
+  value: string;
+  alternative?: string;
+}
+
+export interface PropertyData {
+  id: string;
+  title: string;
+  subtitle: string;
+  remarks: string[];
+  map: string;
+  gallery: string[];
+  summary: SummaryItem[];
+  altView: string;
+  contact: 'cesar' | 'jimmy' | 'gaby';
+}
+
+const data: PropertyData[] = [
   {
     id: '581-w-27th-st',
     title: 'Warehouse',
@@ -46,6 +65,7 @@ export default [
       },
     ],
     altView: '/images/galleries/Photos-04-06.jpg',
+    contact: 'jimmy',
   },
   {
     id: '2821-w-25th-pl',
@@ -92,6 +112,7 @@ export default [
       },
     ],
     altView: '/images/galleries/Photos-01-06.jpg',
+    contact: 'cesar',
   },
   {
     id: '4801-s-congress-ave',
@@ -146,6 +167,7 @@ export default [
       },
     ],
     altView: '/images/galleries/Photos-07-06.jpg',
+    contact: 'gaby',
   },
   {
     id: '5999-s-university-dr',
@@ -195,6 +217,7 @@ export default [
       },
     ],
     altView: '/images/galleries/Photos-03-06.jpg',
+    contact: 'cesar',
   },
   {
     id: '6950-s-congress-ave',
@@ -240,6 +263,7 @@ export default [
       },
     ],
     altView: '/images/galleries/Photos-02-05.jpg',
+    contact: 'cesar',
   },
   {
     id: '11520-sw-88th-st',
@@ -293,6 +317,7 @@ export default [
       },
     ],
     altView: '/images/galleries/Photos-05-06.jpg',
+    contact: 'gaby',
   },
   {
     id: '13508-n-florida-ave',
@@ -348,6 +373,7 @@ export default [
       },
     ],
     altView: '/images/galleries/Photos-06-06.jpg',
+    contact: 'cesar',
   },
   {
     id: '178-nw-44th-st',
@@ -402,6 +428,7 @@ export default [
       },
     ],
     altView: '/images/galleries/Photos-23-06.jpg',
+    contact: 'jimmy',
   },
   {
     id: '179-nw-44th-st',
@@ -456,6 +483,7 @@ export default [
       },
     ],
     altView: '/images/galleries/Photos-13-06.jpg',
+    contact: 'jimmy',
   },
   {
     id: '181-nw-44th-st',
@@ -510,6 +538,7 @@ export default [
       },
     ],
     altView: '/images/galleries/Photos-25-06.jpg',
+    contact: 'jimmy',
   },
   {
     id: '191-nw-44th-st',
@@ -564,6 +593,7 @@ export default [
       },
     ],
     altView: '/images/galleries/Photos-12-06.jpg',
+    contact: 'jimmy',
   },
   {
     id: '3922-nw-2nd-ave',
@@ -618,6 +648,7 @@ export default [
       },
     ],
     altView: '/images/galleries/Photos-24-05.jpg',
+    contact: 'jimmy',
   },
   {
     id: '3930-nw-2nd-ave',
@@ -672,6 +703,7 @@ export default [
       },
     ],
     altView: '/images/galleries/Photos-22-06.jpg',
+    contact: 'jimmy',
   },
   {
     id: '4200-nw-2nd-ave',
@@ -726,6 +758,7 @@ export default [
       },
     ],
     altView: '/images/galleries/Photos-19-06.jpg',
+    contact: 'jimmy',
   },
   {
     id: '4202-nw-2nd-ave',
@@ -780,6 +813,7 @@ export default [
       },
     ],
     altView: '/images/galleries/Photos-20-02.jpg',
+    contact: 'jimmy',
   },
   {
     id: '4204-nw-2nd-ave',
@@ -834,6 +868,7 @@ export default [
       },
     ],
     altView: '/images/galleries/Photos-21-06.jpg',
+    contact: 'jimmy',
   },
   {
     id: '4314-nw-2nd-ave',
@@ -887,6 +922,7 @@ export default [
       },
     ],
     altView: '/images/galleries/Photos-15-06.jpg',
+    contact: 'jimmy',
   },
   {
     id: '4401-nw-2nd-ave',
@@ -940,6 +976,7 @@ export default [
       },
     ],
     altView: '/images/galleries/Photos-18-06.jpg',
+    contact: 'jimmy',
   },
   {
     id: '4431-nw-2nd-ave',
@@ -994,6 +1031,7 @@ export default [
       },
     ],
     altView: '/images/galleries/Photos-17-06.jpg',
+    contact: 'jimmy',
   },
   {
     id: '4433-nw-2nd-ave',
@@ -1043,6 +1081,7 @@ export default [
       },
     ],
     altView: '/images/galleries/Photos-16-06.jpg',
+    contact: 'jimmy',
   },
   {
     id: '4744-nw-2nd-ave',
@@ -1087,6 +1126,7 @@ export default [
       },
     ],
     altView: '/images/galleries/Photos-11-06.jpg',
+    contact: 'jimmy',
   },
   {
     id: '4795-nw-2nd-ave',
@@ -1141,6 +1181,7 @@ export default [
       },
     ],
     altView: '/images/galleries/Photos-14-06.jpg',
+    contact: 'jimmy',
   },
   {
     id: '4810-nw-2nd-ave',
@@ -1195,6 +1236,7 @@ export default [
       },
     ],
     altView: '/images/galleries/Photos-10-06.jpg',
+    contact: 'jimmy',
   },
   {
     id: '4840-nw-2nd-ave',
@@ -1245,6 +1287,7 @@ export default [
       },
     ],
     altView: '/images/galleries/Photos-09-06',
+    contact: 'jimmy',
   },
   {
     id: '5001-nw-2nd-ave',
@@ -1294,6 +1337,7 @@ export default [
       },
     ],
     altView: '/images/galleries/Photos-12-06',
+    contact: 'jimmy',
   },
   {
     id: '4200-4204-nw-2nd-ave',
@@ -1348,23 +1392,8 @@ export default [
       },
     ],
     altView: '/images/galleries/Photos-19-06.jpg',
+    contact: 'jimmy',
   },
 ];
 
-export interface SummaryItem {
-  id: number;
-  key: string;
-  value: string;
-  alternative?: string;
-}
-
-export interface PropertyData {
-  id: string;
-  title: string;
-  subtitle: string;
-  remarks: string[];
-  map: string;
-  gallery: string[];
-  summary: SummaryItem[];
-  altView: string;
-}
+export default data;
