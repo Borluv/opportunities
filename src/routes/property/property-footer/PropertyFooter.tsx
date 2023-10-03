@@ -1,25 +1,45 @@
 import ContactCard from './contact-card/ContactCard';
 import type { FC } from 'react';
+import alex from '../../../assets/images/contacts/alex.png';
+import cesar from '../../../assets/images/contacts/cesar.png';
+import gaby from '../../../assets/images/contacts/gaby.png';
+import jimmy from '../../../assets/images/contacts/jimmy.png';
 import styles from './PropertyFooter.module.scss';
 
-const PropertyFooter: FC = () => (
+interface PropertyFooterPropTypes {
+  contact: 'cesar' | 'jimmy' | 'gaby';
+}
+
+const PropertyFooter: FC<PropertyFooterPropTypes> = ({ contact }) => (
   <footer className={styles.footer}>
     <p className={styles.question}>Ready to Learn More?</p>
     <h2>Contact Us</h2>
-    <ContactCard
-      pictureURL="https://preview.redd.it/iysnv0fpu9341.png?auto=webp&s=c68b73a93c76194899dc583965a299e89b7ba683"
-      name="Cheems"
-      role="Meme"
-      phone="555-55-5rriente"
-      email="cheems@email.com"
-    />
+    {contact === 'gaby' ? (
+      <ContactCard
+        pictureURL={gaby}
+        name="Gabriela Goyo"
+        role="Capital Markets Analyst"
+        phone="+1 (786) 245-3107"
+        email="ggoyo@borluv.com"
+      />
+    ) : contact === 'cesar' ? (
+      <ContactCard pictureURL={cesar} name="César Lang" role="CEO" phone="+1 (786) 367-9941" email="clang@borluv.com" />
+    ) : (
+      <ContactCard
+        pictureURL={jimmy}
+        name="Jimmy Mujica"
+        role="Property Manager"
+        phone="+1 (786) 245-3403"
+        email="jmujica@borluv.com"
+      />
+    )}
     <div className={styles.decoline} />
     <ContactCard
-      pictureURL="https://th.bing.com/th/id/R.3cf3c37393739ce7f5c0ba3a179c7181?rik=fUvZED9AHykqiw&riu=http%3a%2f%2fimages4.fanpop.com%2fimage%2fphotos%2f15900000%2ftaylor-swift-taylor-swift-15913910-1600-1200.jpg&ehk=fPcj8GRiWRCyHxfy9YKb4zFXd45NHNlamjR5rFLdBKA%3d&risl=&pid=ImgRaw&r=0"
-      name="Taylor Swift"
-      role="Superstar"
-      phone="Not Available"
-      email="superstar@email.com"
+      pictureURL={alex}
+      name="Alex Boria"
+      role="Owner/Investor"
+      phone="+1 (786) 586-2492"
+      email="aboria@borluv.com"
     />
   </footer>
 );

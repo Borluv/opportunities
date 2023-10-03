@@ -5,28 +5,42 @@ import PropertyBody from './property-body/PropertyBody';
 import PropertyFooter from './property-footer/PropertyFooter';
 import PropertyHeader from './property-header/PropertyHeader';
 import type { Property as PropertyType } from '../../shared/types/common';
+import { createInterest } from '../../api/interests';
 import data from '../../assets/data';
 
 const Property: FC = () => {
   const { propertyId } = useParams();
   const property = data.find((property) => property.id === propertyId);
   const serverProperty = useLoaderData() as PropertyType;
-  const viewer = localStorage.getItem('viewer') || '';
+  const jsonViewer = localStorage.getItem('viewer');
+  const viewer = jsonViewer ? JSON.parse(jsonViewer) : null;
 
-  const [modalVisibility, setModalVisibility] = useState(true);
+  const [modalVisibility, setModalVisibility] = useState(false);
 
   const closeModal = (): void => setModalVisibility(false);
+  const openModal = (): void => setModalVisibility(true);
 
   useEffect(() => {
-    if (viewer) closeModal();
-  }, [viewer]);
+    if (viewer && propertyId) {
+      createInterest(viewer.id, propertyId)
+        .then(() => {
+          closeModal();
+        })
+        .catch(() => {
+          openModal();
+          localStorage.removeItem('viewer');
+        });
+    } else {
+      openModal();
+    }
+  }, [viewer, propertyId]);
 
   if (property)
     return (
       <>
-        <PropertyHeader title={property?.title} subtitle={property?.subtitle} />
+        <PropertyHeader title={property.title} subtitle={property.subtitle} />
         <PropertyBody property={property} />
-        <PropertyFooter />
+        <PropertyFooter contact={property.contact} />
         <ScrollRestoration />
         {modalVisibility && <HalfModal property={serverProperty} closeModal={closeModal} />}
       </>

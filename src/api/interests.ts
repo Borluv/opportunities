@@ -23,6 +23,9 @@ export const createInterest = async (leadId: string, assetId: string): Promise<v
       interest: { asset_id: assetId },
     }),
   })
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) throw new Error(response.statusText);
+      return response.json();
+    })
     .then((data) => data);
 };

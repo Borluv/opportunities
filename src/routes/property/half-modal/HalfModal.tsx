@@ -41,15 +41,13 @@ const HalfModal: FC<HalfModalPropTypes> = ({ property, closeModal }) => {
       <div className={styles.modal}>
         <form onSubmit={handleSubmit}>
           <img src={logo} alt="Logo" className={styles.borluv} />
-          <span className={styles.logo}>
-            Presenting
-            <br />
-            <small className={styles.property}>
+          <div className={styles.info}>
+            <span>Presenting</span>
+            <p>
               {property.address ?? ''} {property.city}, {property.state}
-            </small>
-            <br />
-          </span>
-          <span className={styles.cta}>Please tell us more about yourself.</span>
+            </p>
+            <small>Please tell us more about yourself.</small>
+          </div>
 
           <label htmlFor="full_name" className={styles.label}>
             Full name:
@@ -86,7 +84,7 @@ const HalfModal: FC<HalfModalPropTypes> = ({ property, closeModal }) => {
           </label>
           <div className={styles.buttons}>
             <small>{error}</small>
-            <button type="submit">Ready!</button>
+            <button type="submit">READY</button>
           </div>
         </form>
       </div>
