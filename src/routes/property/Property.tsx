@@ -21,8 +21,8 @@ const Property: FC = () => {
   const openModal = (): void => setModalVisibility(true);
 
   useEffect(() => {
-    if (viewer && propertyId) {
-      createInterest(viewer.id, propertyId)
+    if (viewer && serverProperty) {
+      createInterest(viewer.id, serverProperty.id)
         .then(() => {
           closeModal();
         })
@@ -33,7 +33,7 @@ const Property: FC = () => {
     } else {
       openModal();
     }
-  }, [viewer, propertyId]);
+  }, [viewer, serverProperty]);
 
   if (property)
     return (
