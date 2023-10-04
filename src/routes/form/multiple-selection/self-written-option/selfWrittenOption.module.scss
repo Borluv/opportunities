@@ -1,0 +1,33 @@
+.option {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.label {
+  background-color: transparent !important;
+  color: white !important;
+  width: 80%;
+  height: 80px;
+  border: 1px solid #ececec !important;
+  border-right: none !important;
+
+  input {
+    background-color: transparent !important;
+    color: white;
+  }
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  font-size: 50px;
+  color: #f55;
+  width: 20%;
+  height: 80px;
+  border: 1px solid #ececec;
+  border-radius: 0 15px;
+}

@@ -1,0 +1,65 @@
+@use '/src/assets/sass/abstracts/' as *;
+
+.header {
+  @include center-contents(false);
+
+  gap: 10%;
+  background-color: $blue-30;
+  font-size: 12px;
+  font-family: $roboto;
+  font-weight: $regular;
+  color: $white-100;
+  padding: 20px 2.5%;
+
+  h1 {
+    font-size: 34px;
+    line-height: 34px;
+    font-family: $crimson;
+    font-weight: $regular;
+  }
+}
+
+.logo {
+  width: 30%;
+
+  img {
+    display: block;
+    width: 100%;
+  }
+}
+
+.decoline {
+  width: 50%;
+  margin-top: 15px;
+  border-bottom: 1px solid $rose-50;
+}
+
+@include media(669px) {
+  .header {
+    font-size: 18px;
+
+    h1 {
+      font-size: 54px;
+      line-height: 44px;
+    }
+  }
+
+  .logo {
+    width: 20%;
+  }
+}
+
+@include media(1024px) {
+  .header {
+    font-size: 28px;
+
+    h1 {
+      font-size: 64px;
+      line-height: 60px;
+    }
+  }
+
+  .logo {
+    width: 250px;
+  }
+}

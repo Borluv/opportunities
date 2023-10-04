@@ -1,0 +1,10 @@
+@use '/src/assets/sass/abstracts/' as *;
+
+@include media(1366px) {
+  .main {
+    max-width: 1366px;
+    box-shadow: 0 0 20px 5px gray;
+    clip-path: inset(0 -50px);
+    margin: auto;
+  }
+}

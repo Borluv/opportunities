@@ -1,0 +1,91 @@
+@use '/src/assets/sass/abstracts/' as *;
+
+.gallery {
+  background-color: $white-100;
+  color: $blue_30;
+  padding: 20px 2.5%;
+  overflow: hidden;
+
+  h2 {
+    align-self: flex-start;
+    font-size: 24px;
+    font-family: $crimson;
+    font-weight: $regular;
+    margin-bottom: 20px;
+  }
+}
+
+.first,
+.second,
+.third {
+  @include center-contents(false);
+
+  width: 300%;
+  transition: 0.5s;
+}
+
+.first {
+  transform: translateX(0);
+}
+
+.second {
+  transform: translateX(calc(-100% / 3));
+}
+
+.third {
+  transform: translateX(calc(-200% / 3));
+}
+
+.container {
+  width: 100%;
+  max-width: 1300px;
+  border-radius: 10px;
+  margin: auto;
+  overflow-x: hidden;
+}
+
+.image {
+  cursor: pointer;
+  display: block;
+  width: 33.33%;
+  aspect-ratio: 1.25;
+}
+
+.indicators {
+  @include center-contents;
+
+  gap: 10px;
+  margin-top: 15px;
+
+  div {
+    cursor: pointer;
+    background-color: $blue-30;
+    width: 15px;
+    height: 15px;
+    border: 1px solid $blue-30;
+    border-radius: 50%;
+  }
+
+  div.active {
+    background-color: transparent;
+  }
+}
+
+.decoline {
+  width: 52.5%;
+  margin-top: 30px;
+  margin-left: -2.5%;
+  border-bottom: 1px solid $rose-50;
+}
+
+@include media(669px) {
+  .gallery {
+    h2 {
+      font-size: 32px;
+    }
+  }
+
+  .container {
+    width: 50%;
+  }
+}

@@ -1,0 +1,38 @@
+.card {
+  display: flex;
+  background-color: #e0ecff;
+  width: 100%;
+  max-width: 500px;
+  height: 130px;
+  padding: 10px 5px;
+  margin: 20px 2.5%;
+  box-shadow: 0 0 7px 1px gray;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+
+.button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #59f;
+  color: white;
+  width: 30%;
+  border: 2px solid #59f;
+  transition: 0.2s;
+
+  svg {
+    font-size: 45px;
+  }
+}
+
+.button:hover,
+.button:active {
+  background-color: transparent;
+  color: #59f;
+}

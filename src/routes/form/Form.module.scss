@@ -1,0 +1,167 @@
+@use '/src/assets/sass/abstracts/' as *;
+
+.container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+.borluv {
+  display: block;
+  width: 120px;
+  margin: 30px auto 0;
+}
+
+.logo {
+  padding-top: 30px !important;
+  padding-bottom: 10px !important;
+}
+
+.texture {
+  background-image: url('../../assets/images/bg-texture.png');
+  background-repeat: no-repeat;
+  background-size: 450px 300px;
+  background-position: -190px 110%;
+}
+
+.dark {
+  background-color: #2b2743;
+  color: white;
+
+  label,
+  input {
+    background-color: #ececec;
+    border: none;
+  }
+}
+
+.form {
+  position: absolute;
+  top: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 300vw;
+  transition: 0.2s;
+
+  section {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    min-height: 100vh;
+    padding: 10px 2.5%;
+  }
+
+  span {
+    font-size: 22px;
+    text-align: center;
+    width: 100%;
+    padding: 60px 0;
+  }
+
+  label {
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    font-weight: $medium;
+    color: black;
+    padding: 3px 5px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-bottom-right-radius: 15px;
+
+    input {
+      font-size: 18px;
+      height: 45px;
+      border: none;
+      border-top: 1px solid #ccc;
+      border-bottom-right-radius: 15px;
+    }
+  }
+
+  .form label input:focus {
+    outline: none;
+    border-bottom: 3px solid #2b2743;
+  }
+
+  .dark label input:focus {
+    outline: none;
+    border-bottom: 3px solid #f55;
+  }
+}
+
+.cta {
+  font-size: 18px !important;
+  padding: 0 !important;
+  margin-top: 15px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 60px;
+
+  small {
+    font-size: 16px;
+    color: #f55;
+    margin: auto;
+  }
+
+  button {
+    background-color: white;
+    color: #2b2743;
+    width: 45%;
+    min-height: 50px;
+    border: 3px solid #2b2743;
+    transition: 0.2s;
+  }
+
+  button:hover {
+    background-color: #2b2743;
+    color: white;
+  }
+}
+
+.property {
+  font-size: 24px !important;
+  font-weight: $medium !important;
+  color: #f55;
+}
+
+.dark .buttons {
+  button {
+    background-color: #2b2743;
+    color: #ececec;
+    border-color: #ececec;
+  }
+
+  button:hover {
+    background-color: #f55;
+    color: white;
+    border-color: #f55;
+  }
+}
+
+.margin-button {
+  margin-left: auto;
+}
+
+.left {
+  left: 0;
+}
+
+.middle {
+  left: -100vw;
+}
+
+.right {
+  left: -200%;
+}
+
+@media only screen and (width >= 669px) {
+  .texture {
+    background-image: none;
+  }
+}

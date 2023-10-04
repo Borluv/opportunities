@@ -1,0 +1,48 @@
+@use '/src/assets/sass/abstracts/' as *;
+
+.card {
+  @include center-contents(false);
+
+  gap: 20px;
+}
+
+.picture {
+  width: 75px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+
+.info {
+  @include center-contents(false, false);
+
+  flex-direction: column;
+
+  h3,
+  span {
+    font-size: 14px;
+    line-height: 16px;
+    margin: 0;
+  }
+
+  h3 {
+    font-weight: $bold;
+  }
+
+  span {
+    font-weight: $light;
+  }
+}
+
+@include media(669px) {
+  .picture {
+    width: 100px;
+  }
+
+  .info {
+    h3,
+    span {
+      font-size: 18px;
+      line-height: 22px;
+    }
+  }
+}
